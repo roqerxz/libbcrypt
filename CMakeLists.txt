@@ -91,3 +91,18 @@ SET(CPACK_PACKAGE_VERSION_MINOR "0")
 SET(CPACK_PACKAGE_VERSION_PATCH "0")
 
 INCLUDE(CPack)
+
+
+install(TARGETS bcrypt EXPORT bcryptTargets
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+
+install(FILES include/bcrypt/bcrypt.h DESTINATION include/bcrypt)
+
+install(EXPORT bcryptTargets
+    FILE bcryptConfig.cmake
+    NAMESPACE bcrypt::
+    DESTINATION lib/cmake/bcrypt
+)
